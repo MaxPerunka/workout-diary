@@ -1,8 +1,9 @@
-import { Text, TextInput, View, Pressable, Modal } from "react-native";
+import { Text, TextInput, View, Pressable, Modal, Alert } from "react-native";
 import style from "../style/style";
 import { Calendar } from "react-native-calendars";
 import React, { useContext, useState } from "react";
 import { WorkoutContext } from "./WorkoutContext";
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 export default function Add() {
     const { addWorkout } = useContext(WorkoutContext);
@@ -17,12 +18,20 @@ export default function Add() {
         setDate(day.dateString)
     };
 
-    const handleAddWorkout = () => {
-        if (distance && duration && date) {
+     const handleAddWorkout = () => {
+        const parsedDistance = parseFloat(distance);
+        const parsedDuration = parseFloat(duration);
+
+        if (parsedDistance < 0 || parsedDuration < 0) {
+            Alert.alert('Invalid Input', 'You cant reverse time or move negatively.');
+            return;
+        }
+
+        if (parsedDistance && parsedDuration && date) {
           const newWorkout = {
             type: selectedType,
-            distance: parseFloat(distance),
-            duration: parseFloat(duration),
+            distance: parsedDistance,
+            duration: parsedDuration,
             date: date,
           };
     
@@ -49,6 +58,7 @@ export default function Add() {
           }}
           onPress={() => setSelectedType('Running')}
         >
+        <MaterialCommunityIcons name="run" size={24}/>
           <Text>Running</Text>
         </Pressable>
         <Pressable
@@ -59,6 +69,7 @@ export default function Add() {
           }}
           onPress={() => setSelectedType('Cycling')}
         >
+        <MaterialCommunityIcons name="bike" size={24}/>
           <Text>Cycling</Text>
         </Pressable>
         <Pressable
@@ -69,6 +80,7 @@ export default function Add() {
           }}
           onPress={() => setSelectedType('Swimming')}
         >
+        <MaterialCommunityIcons name="swim" size={24}/>
           <Text>Swimming</Text>
         </Pressable>
          </View>

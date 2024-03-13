@@ -23,6 +23,7 @@ export default StyleSheet.create({
         margin: 10,
     },
     minititle: {
+        marginTop: 10,
         marginLeft: 10,
         marginBottom: -9,
         fontSize: 11
@@ -31,5 +32,11 @@ export default StyleSheet.create({
         flexDirection: 'row', 
         justifyContent: 'space-around' 
     },
-    
+    workouts: {
+        margin: 5,
+        fontSize: 11,
+        backgroundColor: "#99d499",
+        borderWidth: 1,
+        padding: 10
+    }
 });
