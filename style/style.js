@@ -26,5 +26,10 @@ export default StyleSheet.create({
         marginLeft: 10,
         marginBottom: -9,
         fontSize: 11
-    }
+    },
+    View: { 
+        flexDirection: 'row', 
+        justifyContent: 'space-around' 
+    },
+    
 });

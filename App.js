@@ -1,13 +1,16 @@
-import Add from './components/Add';
-import List from './components/List';
-import Settings from './components/Settings';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { WorkoutProvider } from './components/WorkoutContext';
+import Add from './components/Add';
+import List from './components/List';
+import Settings from './components/Settings';
+
 const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
+    <WorkoutProvider>
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={({ route }) => ({
@@ -42,5 +45,6 @@ export default function App() {
         <Tab.Screen name="Settings" component={Settings} />
       </Tab.Navigator>
     </NavigationContainer>
+    </WorkoutProvider>
   );
 }
