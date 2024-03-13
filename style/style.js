@@ -38,5 +38,5 @@ export default StyleSheet.create({
         backgroundColor: "#99d499",
         borderWidth: 1,
         padding: 10
-    }
+    },
 });

@@ -17,6 +17,7 @@ export default function List() {
                 </View>
                  )}
                  keyExtractor={(item, index) => index.toString()}
+                 contentContainerStyle={{ paddingBottom: 45 }}
             />
         </View>
     );
